@@ -2,23 +2,22 @@ import { useState, useEffect } from 'react';
 import SearchBox from '../components/Search';
 import MovieCard from '../components/MovieCard';
 import axios from '../helpers/axios';
-import Matches from './Matches';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [term, setTerm] = useState('');
 
   useEffect(() => {
-    if (term != '') {
+    if (term !== '') {
       axios
         .get(
           `/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${term}&page=1&include_adult=false&append_to_response=watch/providers`
         )
         .then(({ data }) => {
-          console.log(data);
+          // console.log(data);
           setMovies(data.results);
-          setIsLoading(false);
+          // setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -29,9 +28,9 @@ const Home = () => {
           `/trending/all/week?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&append_to_response=watch/providers`
         )
         .then(({ data }) => {
-          console.log(data);
+          // console.log(data);
           setMovies(data.results);
-          setIsLoading(false);
+          // setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);

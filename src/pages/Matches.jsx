@@ -7,10 +7,10 @@ import { watchList } from '../State/StateAtoms';
 const Matches = () => {
   const movies = useRecoilValue(watchList);
   const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log(movies);
+    // console.log(movies);
     for (let i = 0; i < movies.length; i++) {
       axios
         .get(
